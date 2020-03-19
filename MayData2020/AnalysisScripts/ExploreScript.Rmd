@@ -1,0 +1,35 @@
+---
+title: "Exploring May Data"
+author: "Sofía Meléndez Cartagena"
+date: "3/19/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1) Correr scripts de funciones 
+2) Cambiamos working directory a donde viven los datos
+3) Importar datos utilizando read_trikinetics
+
+```{r}
+May2020 <- read_trikinetics()
+```
+
+4) Hacer bining de 1h
+```{r}
+MiniMay1h <- downsample_time_series(data = May2020, amount = 60, units = "minute", method = "sum")
+head(MiniMay1h)
+```
+
+5) Period analysis
+```{r}
+period_analysis(df = MiniMay1h, smoothinghours = 2, oversampling_factor = 100, )
+```
+
+6) Concat
+```{r}
+concatenate_periodicity_results()
+```
+
