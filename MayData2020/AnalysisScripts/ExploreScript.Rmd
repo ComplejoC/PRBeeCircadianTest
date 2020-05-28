@@ -33,3 +33,19 @@ period_analysis(df = MiniMay1h, smoothinghours = 2, oversampling_factor = 100, )
 concatenate_periodicity_results()
 ```
 
+## Honey Bees
+```{r}
+HoneyBee <- read_trikinetics()
+```
+```{r}
+DownHoney <- downsample_time_series(data = HoneyBee, amount = 60, units = "minute", method = "sum")
+head(HoneyBee)
+```
+
+```{r}
+period_analysis(df = DownHoney, smoothinghours = 2, oversampling_factor = 100, )
+```
+
+```{r}
+concatenate_periodicity_results()
+```
